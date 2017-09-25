@@ -21,12 +21,12 @@ import java.net.URL;
  * Created by A-Souhei on 6/15/2017.
  */
 
-public class Informations_f extends Fragment {
+public class Feedback_f extends Fragment {
 
     public String deviceid;
     public String sims_sn_number;
     public String simid;
-    String customURL = "https://www.sante.gov.mg/seei/public/access/";
+    String customURL = "https://www.sante.gov.mg/seei/public/feedback/";
 
 
     View rootView;
@@ -42,7 +42,7 @@ public class Informations_f extends Fragment {
         this.simid = telephonyManager.getSubscriberId() == null ? "UNRESOLVED" : telephonyManager.getSubscriberId();
         this.sims_sn_number = telephonyManager.getSimSerialNumber() == null ? "UNRESOLVED" : telephonyManager.getSimSerialNumber();
 
-        rootView = inflater.inflate(R.layout.informations_f, container, false);
+        rootView = inflater.inflate(R.layout.feedback_f, container, false);
 
         MyTask task = new MyTask();
         task.execute(customURL);
