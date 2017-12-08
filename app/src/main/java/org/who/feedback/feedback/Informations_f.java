@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,12 @@ import java.net.URL;
  */
 
 public class Informations_f extends Fragment {
+    private static String TAG = "informations";
 
     public String deviceid;
     public String sims_sn_number;
     public String simid;
-    String customURL = "https://www.sante.gov.mg/seei/public/access/";
+    String customURL = getResources().getString(R.string.informations_url);
 
 
     View rootView;
@@ -38,9 +40,13 @@ public class Informations_f extends Fragment {
         TelephonyManager telephonyManager = (TelephonyManager)getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         //String imeistring = telephonyManager.getDeviceId();
 
-        this.deviceid = telephonyManager.getDeviceId() == null ? "UNRESOLVED" : telephonyManager.getDeviceId();
-        this.simid = telephonyManager.getSubscriberId() == null ? "UNRESOLVED" : telephonyManager.getSubscriberId();
-        this.sims_sn_number = telephonyManager.getSimSerialNumber() == null ? "UNRESOLVED" : telephonyManager.getSimSerialNumber();
+        try {
+            this.deviceid = telephonyManager.getDeviceId() == null ? "UNRESOLVED" : telephonyManager.getDeviceId();
+            this.simid = telephonyManager.getSubscriberId() == null ? "UNRESOLVED" : telephonyManager.getSubscriberId();
+            this.sims_sn_number = telephonyManager.getSimSerialNumber() == null ? "UNRESOLVED" : telephonyManager.getSimSerialNumber();
+        } catch (SecurityException ex) {
+            Log.e(TAG, "Unavailable device permissions: " + ex.getMessage());
+        }
 
         rootView = inflater.inflate(R.layout.informations_f, container, false);
 
@@ -79,7 +85,7 @@ public class Informations_f extends Fragment {
             boolean bResponse = result;
             if (bResponse==true)
             {
-                Toast.makeText(getActivity(), "Chargement ...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getResources().getString(R.string.loading_toast), Toast.LENGTH_SHORT).show();
 
                 WebView mWebView = (WebView) rootView.findViewById(R.id.webview_inf);
 
@@ -95,7 +101,7 @@ public class Informations_f extends Fragment {
             }
             else
             {
-                Toast.makeText(getActivity(), "Erreur de chargement", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getResources().getString(R.string.loading_error_toast), Toast.LENGTH_SHORT).show();
             }
         }
     }
