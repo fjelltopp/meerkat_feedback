@@ -28,7 +28,7 @@ public class Informations_f extends Fragment {
     public String deviceid;
     public String sims_sn_number;
     public String simid;
-    String customURL = getResources().getString(R.string.informations_url);
+
 
 
     View rootView;
@@ -36,6 +36,7 @@ public class Informations_f extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        String customURL = getResources().getString(R.string.informations_url);
 
         TelephonyManager telephonyManager = (TelephonyManager)getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         //String imeistring = telephonyManager.getDeviceId();
@@ -82,6 +83,7 @@ public class Informations_f extends Fragment {
 
         @Override
         protected void onPostExecute(Boolean result) {
+            String customURL = getResources().getString(R.string.informations_url);
             boolean bResponse = result;
             if (bResponse==true)
             {
