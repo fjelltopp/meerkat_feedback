@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Facility Data Monitor</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="feedback_url">https://puntland.emro.info/en/seei/public/feedback/</string>
+    <string name="indicators_url">https://puntland.emro.info/en/android_login?url=/en/android?deviceid=</string>
+    <string name="informations_url">https://puntland.emro.info/en/seei/public/access/</string>
+
+    <string name="loading_toast">Loading</string>
+    <string name="loading_error_toast">Error loading</string>
+
+    <string name="nav_header_title">Puntland Ministry of Health</string>
+    <string name="nav_header_email">Facility Data Monitor</string>
+
+    <string name="data_page">Facility data</string>
+    <string name="contact_page">Contact</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
